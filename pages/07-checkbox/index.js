@@ -12,7 +12,6 @@ const notice = [
 
 const Checkbox=()=>{
     const [checkList, setCheckList] = useState([]);
-    console.log(checkList);
 
     const onClickCheckAll = () => {
         if (checkList.length !== notice.length) {
