@@ -13,7 +13,7 @@ const MapProductsUI=(props)=>{
     return (
         <>
         <div>
-          {data?.fetchProducts.map((el, idx)=>(
+          {props.data?.fetchProducts.map((el, idx)=>(
             <Row key={el?._id}>
               <Column><input type="checkbox" /></Column>
               <Column>{idx+1}</Column>
@@ -21,7 +21,7 @@ const MapProductsUI=(props)=>{
               <Column>{el?.price}</Column>
               <Column>{el?.seller}</Column>
               <Column>{el?.createdAt}</Column>
-              <Column><button id={el?._id} onClick={handleDelete}>삭제하기</button></Column>
+              <Column><button id={el?._id} onClick={props.handleDelete}>삭제하기</button></Column>
             </Row>
           ))}
         </div>

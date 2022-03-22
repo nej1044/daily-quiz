@@ -24,14 +24,14 @@ const DELETE_PRODUCT = gql`
 `
 
 const MapProducts=()=>{
-    const { data } = useQuery(FETCH_PRODUCTS)
+    const { data, refetch } = useQuery(FETCH_PRODUCTS)
     const [ deleteProduct ] = useMutation(DELETE_PRODUCT)
   
-    async function handleDelete(event) {
+    const handleDelete = async(event)=> {
       try {
         await deleteProduct({
           variables: { productId: event.target.id },
-          refetchQueries: [{ query: FETCH_PRODUCTS }]
+          refetchQueries: [{ query: FETCH_PRODUCTS }] 
         })
       } catch(error) {
         alert(error.message)
