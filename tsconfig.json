@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/08-02-product-detail/[productId]/index.js"  ],
   "exclude": [
     "node_modules"
   ]
