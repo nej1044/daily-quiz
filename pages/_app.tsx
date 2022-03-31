@@ -1,3 +1,4 @@
+import "antd/dist/antd.css";
 import "../styles/globals.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import Layout from "../src/components/commons/layout";
@@ -8,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function MyApp({ Component, pageProps }) {
   const client = new ApolloClient({
-    uri: "http://example.codebootcamp.co.kr/graphql",
+    uri: "http://backend06.codebootcamp.co.kr/graphql",
     cache: new InMemoryCache(),
   });
   return (
