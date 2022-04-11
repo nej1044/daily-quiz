@@ -6,19 +6,30 @@ import { Global } from "@emotion/react";
 import { globalStyles } from "../src/components/commons/styles/globalstyles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { createContext, useState } from "react";
+
+export const GlobalContext = createContext<object | undefined>(null);
 
 function MyApp({ Component, pageProps }) {
+  const [accessToken, setAccessToken] = useState("");
+  const value = {
+    accessToken,
+    setAccessToken,
+  };
   const client = new ApolloClient({
     uri: "http://backend06.codebootcamp.co.kr/graphql",
     cache: new InMemoryCache(),
   });
+
   return (
-    <ApolloProvider client={client}>
-      <Global styles={globalStyles} />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
+    <GlobalContext.Provider value={value}>
+      <ApolloProvider client={client}>
+        <Global styles={globalStyles} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
+    </GlobalContext.Provider>
   );
 }
 
