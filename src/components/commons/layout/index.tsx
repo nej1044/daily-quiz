@@ -28,7 +28,7 @@ const BodyWrapper = styled.div`
 
 const Body = styled.section`
   width: 100%;
-  height: 700px;
+  height: 1000px;
 `;
 
 const Layout = (props: ILayoutProps) => {
