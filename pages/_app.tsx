@@ -1,45 +1,35 @@
 import "antd/dist/antd.css";
 import "../styles/globals.css";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/components/commons/styles/globalstyles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'react-quill/dist/quill.snow.css';
-// import { createContext, useState } from "react";
+import "react-quill/dist/quill.snow.css";
 import { atom, RecoilRoot } from "recoil";
+import ApolloSetting from "../src/components/commons/apollo";
+import { AppProps } from "next/dist/shared/lib/router/router";
 
-// export const GlobalContext = createContext<object | undefined>(null);
-
-export const editState = atom({
+export const globalState = atom({
   key: "editState",
   default: false,
 });
 
-function MyApp({ Component, pageProps }) {
-  // const [accessToken, setAccessToken] = useState("");
-  // const value = {
-  //   accessToken,
-  //   setAccessToken,
-  // };
+export const globalToken = atom({
+  key: "globalToken",
+  default: "",
+});
 
-  const client = new ApolloClient({
-    uri: "http://backend06.codebootcamp.co.kr/graphql",
-    cache: new InMemoryCache(),
-  });
-
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    // <GlobalContext.Provider value={value}>
     <RecoilRoot>
-      <ApolloProvider client={client}>
+      <ApolloSetting>
         <Global styles={globalStyles} />
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </ApolloProvider>
+      </ApolloSetting>
     </RecoilRoot>
-    // </GlobalContext.Provider>
   );
 }
 
