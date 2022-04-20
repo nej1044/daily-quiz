@@ -35,6 +35,7 @@ const DELETE_BOARD = gql`
     deleteBoard(boardId: $boardId)
   }
 `;
+
 interface FormValues {
   writer?: string;
   title: string;

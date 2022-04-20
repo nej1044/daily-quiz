@@ -6,6 +6,7 @@ import { Global } from "@emotion/react";
 import { globalStyles } from "../src/components/commons/styles/globalstyles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'react-quill/dist/quill.snow.css';
 // import { createContext, useState } from "react";
 import { atom, RecoilRoot } from "recoil";
 

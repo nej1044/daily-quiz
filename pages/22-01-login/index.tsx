@@ -1,10 +1,10 @@
 import { gql, useMutation } from "@apollo/client";
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationLoginUserArgs,
 } from "../../src/commons/types/generated/types";
-import { GlobalContext } from "../_app";
+// import { GlobalContext } from "../_app";
 
 const LOGIN_USER = gql`
   mutation loginUser($password: String, $email: String) {
@@ -19,7 +19,7 @@ const LoginPage = () => {
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
   >(LOGIN_USER);
-  const { setAccessToken } = useContext<any>(GlobalContext);
+  // const { setAccessToken } = useContext<any>(GlobalContext);
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -33,7 +33,7 @@ const LoginPage = () => {
     try {
       const result = await loginUser({ variables: { ...inputs } });
       console.log(result);
-      setAccessToken(result.data?.loginUser.accessToken);
+      // setAccessToken(result.data?.loginUser.accessToken);
       alert(`로그인하였습니다.`);
     } catch (error) {
       if (error instanceof Error)
