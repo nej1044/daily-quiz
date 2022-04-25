@@ -1,4 +1,9 @@
 import Head from "next/head";
+
+declare const window: typeof globalThis & {
+  IMP: any;
+};
+
 const PaymentPage = () => {
   const onClickPayment = () => {
     const IMP = window.IMP; // 생략 가능
